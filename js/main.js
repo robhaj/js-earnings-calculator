@@ -7,11 +7,18 @@ $(document).on('ready', function() {
     var tax = parseInt($('input[name=meal-price]').val());
     var tip = parseInt($('input[name=meal-taxrate]').val());
     var x = totalCharge(price, tax, tip);
-     $('#subTotal').text(x[0]);
-     $('#tip').text(x[1]);
-     $('#total').text(x[2]);
+    var y = runningTotals(tips);
+
+    $('#subTotal').text(x.subTotal);
+    $('#tip').text(x.tipDollar);
+    $('#total').text(x.total);
+
+    $('#totalTips').text(y.totTips);
+    $('#totalCount').text(y.mealCount);
+    $('#averageTip').text(y.avgTip);
 
     $('.form-input').val('');
+
   });
 
   $('input[value=Clear]').on('click', function(){
